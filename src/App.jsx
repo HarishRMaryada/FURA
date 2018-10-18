@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+
+//material ui css
+import Button from '@material-ui/core/Button';
+
+
+//css
 import './App.css';
 
 
@@ -8,15 +14,15 @@ import { empty } from '../node_modules/rxjs';
 
 class App extends Component {
   state = {
-    Name:[{Data : "Harish"},{Data:"Test"},{Data:"THREE"}],
+    Name:[{id: 1 ,Data : "Harish"},{id :2,Data:"Test"},{id:3,Data:"THREE"}],
     flag:true,
     showall :true
   }
   switchHandler = (propertyName,flagvalue) =>{
     if(flagvalue)
-    this.setState({Name:[{Data:propertyName},{Data:"Test"}],flag:flagvalue})
+    this.setState({Name:[{id: 1 ,Data:propertyName},{id: 2 ,Data:"Test"}],flag:flagvalue})
     else
-    this.setState({Name:[{Data:ModuleA},{Data:"THREE"}],flag:flagvalue})
+    this.setState({Name:[{id: 1 ,Data:ModuleA},{id: 3 ,Data:"THREE"}],flag:flagvalue})
 
   }
   nameHandler  = (event) =>{
@@ -28,7 +34,6 @@ class App extends Component {
   }
 
   render() {      
-
     
   let dataflag = null;
 
@@ -43,14 +48,18 @@ class App extends Component {
   {
       users = (
         <div>
-          {this.state.Name.map(name => {
-            return <h1>{name.Data}</h1>
+          {this.state.Name.map((name) => {
+            return <h1 key={name.id}>{name.Data}</h1>
           })}
         </div>
       )
   }
 
+
+  
     return (
+
+      
       <div className="App">        
         <h1>I am a React Developer</h1>
          <PersonalData Name={this.state.Name[0].Data} 
@@ -62,7 +71,7 @@ class App extends Component {
         {dataflag}
 
         
-        <button onClick = {() => this.switchHandler("NameTest",!this.state.flag)} >switch</button>
+        <Button variant="outlined" color="primary" onClick = {() => this.switchHandler("NameTest",!this.state.flag)} >switch</Button>
 
         LISTING        
         {users}
