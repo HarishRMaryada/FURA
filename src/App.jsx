@@ -6,11 +6,11 @@ import Button from '@material-ui/core/Button';
 
 //css
 import './App.css';
+import TopNavBar from './Presentation/TopNavBar';
+import LeftDrawer from './Presentation/LeftDrawer';
 
 
 import PersonalData from './Person/Person.jsx'
-import { throws } from 'assert';
-import { empty } from '../node_modules/rxjs';
 
 class App extends Component {
   state = {
@@ -60,7 +60,10 @@ class App extends Component {
     return (
 
       
-      <div className="App">        
+      <div className="App">   
+        
+        <TopNavBar/>
+        <LeftDrawer />    
         <h1>I am a React Developer</h1>
          <PersonalData Name={this.state.Name[0].Data} 
          chnagedName = {this.nameHandler}
